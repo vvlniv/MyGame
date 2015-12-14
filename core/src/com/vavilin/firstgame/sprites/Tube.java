@@ -1,5 +1,6 @@
 package com.vavilin.firstgame.sprites;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.*;
 

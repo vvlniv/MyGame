@@ -1,5 +1,9 @@
 package com.vavilin.firstgame.sprites;
 
+import com.badlogic.gdx.Gdx;
+
+
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -16,8 +20,9 @@ public class Body
     private  Vector3 velocity;
     private Animation bodyAnimation;
 
-    private Texture body;
-    Texture  texture;
+    private Texture  texture;
+
+    private Sound flap;
 
     private Rectangle bounds;
 
@@ -28,6 +33,7 @@ public class Body
         texture = new Texture("birdanimation.png");
         bodyAnimation = new Animation(new TextureRegion(texture),3,0.5f);
         bounds = new Rectangle(x,y,texture.getWidth()/3,texture.getHeight());
+        flap = Gdx.audio.newSound(Gdx.files.internal("sfx_wing.ogg"));
 
     }
 
@@ -55,6 +61,7 @@ public class Body
 
     public void jump(){
         velocity.y = 250;
+        flap.play(0.5f);
     }
 
     public Rectangle getBounds(){
@@ -64,5 +71,6 @@ public class Body
 
     public void dispose() {
         texture.dispose();
+        flap.dispose();
     }
 }
